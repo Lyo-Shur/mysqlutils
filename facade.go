@@ -17,6 +17,11 @@ func (mysqlUtils MysqlUtils) GetDataBase(templateEngine *_struct.TemplateEngine,
 	return info.GetDataBase(templateEngine, dataBaseName)
 }
 
+// 获取Holder
+func (mysqlUtils MysqlUtils) GetServiceHolder(dataSourceName string) *mvc.Holder {
+	return mvc.GetHolder(dataSourceName)
+}
+
 // 获取Mapper XML
 func (mysqlUtils MysqlUtils) GetMapperXML(db info.DataBase, tableName string) string {
 	return mvc.GetMapperXML(db, tableName)
