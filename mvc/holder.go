@@ -31,14 +31,16 @@ func GetHolder(dataSourceName string) *Holder {
 	utils := gorm.Gorm{}
 	structEngine := utils.GetStructEngine()
 	structEngine.InitDB("mysql", dataSourceName)
-	structEngine.SetLogger(&core.NoLogger{})
 	holder.StructTemplateEngine = utils.GetStructTemplateEngine(structEngine)
 
 	// 获取Table模板引擎
 	tableEngine := utils.GetTableEngine()
 	tableEngine.InitDB("mysql", dataSourceName)
-	tableEngine.SetLogger(&core.NoLogger{})
 	holder.TableTemplateEngine = utils.GetTableTemplateEngine(tableEngine)
+
+	// 临时关闭日志
+	structEngine.SetLogger(&core.NoLogger{})
+	tableEngine.SetLogger(&core.NoLogger{})
 
 	// 获取默认数据库信息
 	holder.DataBase = info.GetDataBase(holder.StructTemplateEngine, databaseName)
@@ -53,5 +55,10 @@ func GetHolder(dataSourceName string) *Holder {
 		dao := utils.GetDAO(manager)
 		holder.Services[tableName] = mvc.GetService(dao)
 	}
+
+	// 重新开启日志
+	structEngine.SetLogger(&core.PrintLogger{})
+	tableEngine.SetLogger(&core.PrintLogger{})
+
 	return &holder
 }
