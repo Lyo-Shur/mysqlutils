@@ -2,6 +2,7 @@ package mvc
 
 import (
 	"github.com/Lyo-Shur/gorm"
+	"github.com/Lyo-Shur/gorm/core"
 	"github.com/Lyo-Shur/gorm/struct"
 	"github.com/Lyo-Shur/gorm/table"
 	"github.com/Lyo-Shur/gorm/table/mvc"
@@ -30,11 +31,13 @@ func GetHolder(dataSourceName string) *Holder {
 	utils := gorm.Gorm{}
 	structEngine := utils.GetStructEngine()
 	structEngine.InitDB("mysql", dataSourceName)
+	structEngine.SetLogger(&core.NoLogger{})
 	holder.StructTemplateEngine = utils.GetStructTemplateEngine(structEngine)
 
 	// 获取Table模板引擎
 	tableEngine := utils.GetTableEngine()
 	tableEngine.InitDB("mysql", dataSourceName)
+	tableEngine.SetLogger(&core.NoLogger{})
 	holder.TableTemplateEngine = utils.GetTableTemplateEngine(tableEngine)
 
 	// 获取默认数据库信息
