@@ -28,15 +28,14 @@ func GetHolder(dataSourceName string) *Holder {
 	databaseName := strings.Split(strings.Split(dataSourceName, "/")[1], "?")[0]
 
 	// 获取结构体模板引擎
-	utils := gorm.Gorm{}
-	structEngine := utils.GetStructEngine()
+	structEngine := gorm.StructEngine{}
 	structEngine.InitDB("mysql", dataSourceName)
-	holder.StructTemplateEngine = utils.GetStructTemplateEngine(structEngine)
+	holder.StructTemplateEngine = gorm.GetStructTemplateEngine(&structEngine)
 
 	// 获取Table模板引擎
-	tableEngine := utils.GetTableEngine()
+	tableEngine := gorm.TableEngine{}
 	tableEngine.InitDB("mysql", dataSourceName)
-	holder.TableTemplateEngine = utils.GetTableTemplateEngine(tableEngine)
+	holder.TableTemplateEngine = gorm.GetTableTemplateEngine(&tableEngine)
 
 	// 临时关闭日志
 	structEngine.SetLogger(&core.NoLogger{})
@@ -51,8 +50,8 @@ func GetHolder(dataSourceName string) *Holder {
 		tableName := holder.DataBase.Tables[i].Name
 		// 逐层组装Service
 		mapper := GetMapperXML(holder.DataBase, tableName)
-		manager := utils.GetTableManagerByString(holder.TableTemplateEngine, mapper)
-		dao := utils.GetDAO(manager)
+		manager := gorm.GetTableManagerByString(holder.TableTemplateEngine, mapper)
+		dao := gorm.GetDAO(manager)
 		holder.Services[tableName] = mvc.GetService(dao)
 	}
 

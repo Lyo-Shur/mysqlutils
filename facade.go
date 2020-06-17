@@ -1,28 +1,26 @@
 package mysqlutils
 
 import (
-	"github.com/Lyo-Shur/gorm"
 	"github.com/Lyo-Shur/gorm/struct"
 	"github.com/Lyo-Shur/mysqlutils/info"
 	"github.com/Lyo-Shur/mysqlutils/mvc"
 )
 
-// 查询引擎
-type MysqlUtils struct {
-	gorm.Gorm
-}
+// 结构体
+type DataBase = info.DataBase
+type Holder = mvc.Holder
 
 // 获取数据库相关信息
-func (mysqlUtils MysqlUtils) GetDataBase(templateEngine *_struct.TemplateEngine, dataBaseName string) info.DataBase {
+func GetDataBase(templateEngine *_struct.TemplateEngine, dataBaseName string) info.DataBase {
 	return info.GetDataBase(templateEngine, dataBaseName)
 }
 
 // 获取Holder
-func (mysqlUtils MysqlUtils) GetServiceHolder(dataSourceName string) *mvc.Holder {
+func GetHolder(dataSourceName string) *mvc.Holder {
 	return mvc.GetHolder(dataSourceName)
 }
 
 // 获取Mapper XML
-func (mysqlUtils MysqlUtils) GetMapperXML(db info.DataBase, tableName string) string {
+func GetMapperXML(db info.DataBase, tableName string) string {
 	return mvc.GetMapperXML(db, tableName)
 }
