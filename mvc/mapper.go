@@ -1,8 +1,8 @@
 package mvc
 
 import (
-	"github.com/Lyo-Shur/gorm/generate"
-	"github.com/Lyo-Shur/mysqlutils/info"
+	"github.com/lyoshur/gorm/generate"
+	"github.com/lyoshur/mysqlutils/info"
 )
 
 const mapper = `

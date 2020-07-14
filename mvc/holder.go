@@ -1,12 +1,12 @@
 package mvc
 
 import (
-	"github.com/Lyo-Shur/gorm"
-	"github.com/Lyo-Shur/gorm/core"
-	"github.com/Lyo-Shur/gorm/struct"
-	"github.com/Lyo-Shur/gorm/table"
-	"github.com/Lyo-Shur/gorm/table/mvc"
-	"github.com/Lyo-Shur/mysqlutils/info"
+	"github.com/lyoshur/gorm"
+	"github.com/lyoshur/gorm/core"
+	"github.com/lyoshur/gorm/struct"
+	"github.com/lyoshur/gorm/table"
+	"github.com/lyoshur/gorm/table/mvc"
+	"github.com/lyoshur/mysqlutils/info"
 	"strings"
 )
 

@@ -1,8 +1,8 @@
 package info
 
 import (
-	"github.com/Lyo-Shur/gorm/core"
-	"github.com/Lyo-Shur/gorm/struct"
+	"github.com/lyoshur/gorm/core"
+	"github.com/lyoshur/gorm/struct"
 	"log"
 )
 

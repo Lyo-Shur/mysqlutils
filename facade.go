@@ -1,9 +1,9 @@
 package mysqlutils
 
 import (
-	"github.com/Lyo-Shur/gorm/struct"
-	"github.com/Lyo-Shur/mysqlutils/info"
-	"github.com/Lyo-Shur/mysqlutils/mvc"
+	"github.com/lyoshur/gorm/struct"
+	"github.com/lyoshur/mysqlutils/info"
+	"github.com/lyoshur/mysqlutils/mvc"
 )
 
 // 结构体
