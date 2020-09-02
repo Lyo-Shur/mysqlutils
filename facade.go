@@ -27,6 +27,6 @@ type SessionFactoryBuilder = session.FactoryBuilder
 
 // 获取会话工厂建造者
 //noinspection GoUnusedExportedFunction
-func GetSessionFactoryBuilder(driverName string, dataSourceName string) *SessionFactoryBuilder {
-	return session.GetSessionFactoryBuilder(driverName, dataSourceName)
+func GetSessionFactoryBuilder(dataSourceName string) *SessionFactoryBuilder {
+	return session.GetSessionFactoryBuilder(dataSourceName)
 }
