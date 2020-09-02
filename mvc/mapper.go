@@ -20,21 +20,21 @@ const mapper = `
 	{{range $i, $v := .Table.Columns}}
 		{{if ne $v.Name $key}}
 			{{ $t := (ClearType .Type) }}
-			{{range $j, $c := .IntTypes}}
+			{{range $j, $c := $.IntTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
 					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .FloatTypes}}
+			{{range $j, $c := $.FloatTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
 					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .DateTypes}}
+			{{range $j, $c := $.DateTypes}}
 				{{if eq $t $c}}
 					{{if eq $t "date"}}
 						{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
@@ -63,7 +63,7 @@ const mapper = `
 					{{end}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .StringTypes}}
+			{{range $j, $c := $.StringTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} LIKE #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
@@ -96,21 +96,21 @@ const mapper = `
 	{{range $i, $v := .Table.Columns}}
 		{{if ne $v.Name $key}}
 			{{ $t := (ClearType .Type) }}
-			{{range $j, $c := .IntTypes}}
+			{{range $j, $c := $.IntTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
 					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .FloatTypes}}
+			{{range $j, $c := $.FloatTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
 					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .DateTypes}}
+			{{range $j, $c := $.DateTypes}}
 				{{if eq $t $c}}
 					{{if eq $t "date"}}
 						{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
@@ -139,7 +139,7 @@ const mapper = `
 					{{end}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .StringTypes}}
+			{{range $j, $c := $.StringTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} LIKE #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
@@ -160,21 +160,21 @@ const mapper = `
 	{{range $i, $v := .Table.Columns}}
 		{{if ne $v.Name $key}}
 			{{ $t := (ClearType .Type) }}
-			{{range $j, $c := .IntTypes}}
+			{{range $j, $c := $.IntTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
 					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .FloatTypes}}
+			{{range $j, $c := $.FloatTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
 					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .DateTypes}}
+			{{range $j, $c := $.DateTypes}}
 				{{if eq $t $c}}
 					{{if eq $t "date"}}
 						{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
@@ -203,7 +203,7 @@ const mapper = `
 					{{end}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .StringTypes}}
+			{{range $j, $c := $.StringTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} LIKE #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
@@ -232,21 +232,21 @@ const mapper = `
 	{{range $i, $v := .Table.Columns}}
 		{{if ne $v.Name $key}}
 			{{ $t := (ClearType .Type) }}
-			{{range $j, $c := .IntTypes}}
+			{{range $j, $c := $.IntTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
 					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .FloatTypes}}
+			{{range $j, $c := $.FloatTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
 					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .DateTypes}}
+			{{range $j, $c := $.DateTypes}}
 				{{if eq $t $c}}
 					{{if eq $t "date"}}
 						{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
@@ -275,7 +275,7 @@ const mapper = `
 					{{end}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .StringTypes}}
+			{{range $j, $c := $.StringTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
@@ -301,21 +301,21 @@ const mapper = `
 	{{range $i, $v := .Table.Columns}}
 		{{if ne $v.Name $key}}
 			{{ $t := (ClearType .Type) }}
-			{{range $j, $c := .IntTypes}}
+			{{range $j, $c := $.IntTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
 					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .FloatTypes}}
+			{{range $j, $c := $.FloatTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
 					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .DateTypes}}
+			{{range $j, $c := $.DateTypes}}
 				{{if eq $t $c}}
 					{{if eq $t "date"}}
 						{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
@@ -344,7 +344,7 @@ const mapper = `
 					{{end}}
 				{{end}}
 			{{end}}
-			{{range $j, $c := .StringTypes}}
+			{{range $j, $c := $.StringTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
