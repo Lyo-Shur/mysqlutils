@@ -7,6 +7,7 @@ import (
 )
 
 // 表信息XML
+//noinspection SpellCheckingInspection
 const tableXML = `
 <xml>
     <mapper column="TABLE_NAME" parameter="Name"/>
@@ -29,6 +30,7 @@ const tableXML = `
 `
 
 // 列信息XML
+//noinspection SpellCheckingInspection
 const columnXML = `
 <xml>
     <mapper column="ORDINAL_POSITION" parameter="Number"/>
@@ -57,6 +59,7 @@ const columnXML = `
 `
 
 // 索引XML
+//noinspection SpellCheckingInspection
 const indexXML = `
 <xml>
     <mapper column="INDEX_NAME" parameter="Name"/>
@@ -81,6 +84,7 @@ const indexXML = `
 `
 
 // 外键XML
+//noinspection SpellCheckingInspection
 const keyXML = `
 <xml>
     <mapper column="COLUMN_NAME" parameter="ColumnName"/>
@@ -154,6 +158,7 @@ func getColumns(templateEngine *_struct.TemplateEngine, dataBaseName string, tab
 }
 
 // 获取索引相关信息
+//noinspection SpellCheckingInspection
 func getIndexs(templateEngine *_struct.TemplateEngine, dataBaseName string, tableName string) []index {
 	indexManager := _struct.GetManager(templateEngine, core.GetXmlConfig(indexXML), index{})
 	vs, err := indexManager.Query("GetList", map[string]interface{}{

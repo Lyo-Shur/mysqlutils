@@ -31,6 +31,7 @@ func (db *DataBase) GetTable(tableName string) *table {
 }
 
 // 表信息
+//noinspection SpellCheckingInspection
 type table struct {
 	// 表名
 	Name string
@@ -67,6 +68,7 @@ func (table *table) GetColumn(columnName string) column {
 }
 
 // 列信息
+//noinspection SpellCheckingInspection
 type column struct {
 	// 序号
 	Number int64

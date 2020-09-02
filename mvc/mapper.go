@@ -2,7 +2,7 @@ package mvc
 
 import (
 	"github.com/lyoshur/gorm/generate"
-	"github.com/lyoshur/mysqlutils/info"
+	"github.com/lyoshur/mysqlutils/mvc/info"
 )
 
 const mapper = `
