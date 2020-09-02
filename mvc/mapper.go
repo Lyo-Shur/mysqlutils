@@ -89,8 +89,6 @@ const mapper = `
             SELECT
                 COUNT(1)
             FROM
-                {{.Table.Name}}
-            WHERE
                 {{$.GraveAccent}}{{.Table.Name}}{{$.GraveAccent}}
             WHERE
 	{{range $i, $v := .Table.Columns}}
