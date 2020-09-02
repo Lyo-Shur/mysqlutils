@@ -41,9 +41,9 @@ type FactoryBuilder struct {
 }
 
 // 获取会话工厂建造者
-func GetSessionFactoryBuilder(driverName string, dataSourceName string) *FactoryBuilder {
+func GetSessionFactoryBuilder(dataSourceName string) *FactoryBuilder {
 	fb := FactoryBuilder{}
-	db, err := sql.Open(driverName, dataSourceName)
+	db, err := sql.Open("mysql", dataSourceName)
 	if err != nil {
 		log.Fatal(err)
 	}
