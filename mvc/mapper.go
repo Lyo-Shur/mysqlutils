@@ -13,9 +13,9 @@ const mapper = `
         <key>GetList</key>
         <value>
             SELECT
-                {{range $i, $v := .Table.Columns}}{{.GraveAccent}}{{.Name}}{{.GraveAccent}}{{if ne $v.Number $ColumnNumber}}, {{end}}{{end}}
+                {{range $i, $v := .Table.Columns}}{{$.GraveAccent}}{{.Name}}{{$.GraveAccent}}{{if ne $v.Number $ColumnNumber}}, {{end}}{{end}}
             FROM
-                {{.GraveAccent}}{{.Table.Name}}{{.GraveAccent}}
+                {{$.GraveAccent}}{{.Table.Name}}{{$.GraveAccent}}
             WHERE
 	{{range $i, $v := .Table.Columns}}
 		{{if ne $v.Name $key}}
@@ -23,14 +23,14 @@ const mapper = `
 			{{range $j, $c := .IntTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
 			{{range $j, $c := .FloatTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
@@ -65,7 +65,7 @@ const mapper = `
 			{{end}}
 			{{range $j, $c := .StringTypes}}
 				{{if eq $t $c}}
-					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} LIKE #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} LIKE #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
 		{{end}}
@@ -91,7 +91,7 @@ const mapper = `
             FROM
                 {{.Table.Name}}
             WHERE
-                {{.GraveAccent}}{{.Table.Name}}{{.GraveAccent}}
+                {{$.GraveAccent}}{{.Table.Name}}{{$.GraveAccent}}
             WHERE
 	{{range $i, $v := .Table.Columns}}
 		{{if ne $v.Name $key}}
@@ -99,14 +99,14 @@ const mapper = `
 			{{range $j, $c := .IntTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
 			{{range $j, $c := .FloatTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
@@ -141,7 +141,7 @@ const mapper = `
 			{{end}}
 			{{range $j, $c := .StringTypes}}
 				{{if eq $t $c}}
-					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} LIKE #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} LIKE #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
 		{{end}}
@@ -155,7 +155,7 @@ const mapper = `
             SELECT
                 COUNT(1)
             FROM
-                {{.GraveAccent}}{{.Table.Name}}{{.GraveAccent}}
+                {{$.GraveAccent}}{{.Table.Name}}{{$.GraveAccent}}
             WHERE
 	{{range $i, $v := .Table.Columns}}
 		{{if ne $v.Name $key}}
@@ -163,14 +163,14 @@ const mapper = `
 			{{range $j, $c := .IntTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
 			{{range $j, $c := .FloatTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
@@ -205,7 +205,7 @@ const mapper = `
 			{{end}}
 			{{range $j, $c := .StringTypes}}
 				{{if eq $t $c}}
-					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} LIKE #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} LIKE #{.{{BigHump $v.Name}}} AND {{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
 		{{end}}
@@ -218,31 +218,31 @@ const mapper = `
         <key>GetModel</key>
         <value>
             SELECT
-                {{range $i, $v := .Table.Columns}}{{.GraveAccent}}{{.Name}}{{.GraveAccent}}{{if ne $v.Number $ColumnNumber}}, {{end}}{{end}}
+                {{range $i, $v := .Table.Columns}}{{$.GraveAccent}}{{.Name}}{{$.GraveAccent}}{{if ne $v.Number $ColumnNumber}}, {{end}}{{end}}
             FROM
-                {{.GraveAccent}}{{.Table.Name}}{{.GraveAccent}}
+                {{$.GraveAccent}}{{.Table.Name}}{{$.GraveAccent}}
             WHERE
-				{{.GraveAccent}}{{$key}}{{.GraveAccent}} = #{.}
+				{{$.GraveAccent}}{{$key}}{{$.GraveAccent}} = #{.}
         </value>
     </sql>
 	<sql>
         <key>Update</key>
         <value>
-            UPDATE {{.GraveAccent}}{{.Table.Name}}{{.GraveAccent}} SET
+            UPDATE {{$.GraveAccent}}{{.Table.Name}}{{$.GraveAccent}} SET
 	{{range $i, $v := .Table.Columns}}
 		{{if ne $v.Name $key}}
 			{{ $t := (ClearType .Type) }}
 			{{range $j, $c := .IntTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} = #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
 			{{range $j, $c := .FloatTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} = #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
@@ -277,12 +277,12 @@ const mapper = `
 			{{end}}
 			{{range $j, $c := .StringTypes}}
 				{{if eq $t $c}}
-					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{.GraveAccent}}{{$v.Name}}{{.GraveAccent}} = #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} {{$.GraveAccent}}{{$v.Name}}{{$.GraveAccent}} = #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
 		{{end}}
 	{{end}}
-            WHERE {{.GraveAccent}}{{$key}}{{.GraveAccent}} = #{.{{BigHump $key}}}
+            WHERE {{$.GraveAccent}}{{$key}}{{$.GraveAccent}} = #{.{{BigHump $key}}}
         </value>
     </sql>
 	<sql>
@@ -292,7 +292,7 @@ const mapper = `
 			(
 		{{range $i, $v := .Table.Columns}}
 			{{if or (ne .Name $key) (eq $.Table.AutoIncrement -1)}}
-				{{.GraveAccent}}{{.Name}}{{.GraveAccent}}{{if ne $v.Number $ColumnNumber}}, {{end}}
+				{{$.GraveAccent}}{{.Name}}{{$.GraveAccent}}{{if ne $v.Number $ColumnNumber}}, {{end}}
 			{{end}}
 		{{end}}
 			)
@@ -357,7 +357,7 @@ const mapper = `
     <sql>
         <key>Delete</key>
         <value>
-            DELETE FROM {{.GraveAccent}}{{.Table.Name}}{{.GraveAccent}} WHERE {{.GraveAccent}}{{$key}}{{.GraveAccent}} = #{.}
+            DELETE FROM {{$.GraveAccent}}{{.Table.Name}}{{$.GraveAccent}} WHERE {{$.GraveAccent}}{{$key}}{{$.GraveAccent}} = #{.}
         </value>
     </sql>
 </xml>
