@@ -209,7 +209,7 @@ const mapper = `
 		{{end}}
 	{{end}}
             1 = 1
-			LIMIT #{.Start},#{.Length}
+			LIMIT 0, 1
         </value>
     </sql>
 	<sql>

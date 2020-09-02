@@ -4,17 +4,16 @@ import (
 	"github.com/lyoshur/gorm/table"
 )
 
-// 定义DAO接口
 type DAO interface {
 	GetList(attr interface{}) (table.Table, error)
 	GetCount(attr interface{}) (int64, error)
+	Exist(attr interface{}) (bool, error)
 	GetModel(attr interface{}) (table.Table, error)
 	Update(attr interface{}) (int64, error)
 	Insert(attr interface{}) (int64, error)
 	Delete(attr interface{}) (int64, error)
 }
 
-// dao层结构体
 type daoImpl struct {
 	tableManager *table.Manager
 }
@@ -34,6 +33,12 @@ func (daoImpl *daoImpl) GetList(attr interface{}) (table.Table, error) {
 // 查询条数方法
 func (daoImpl *daoImpl) GetCount(attr interface{}) (int64, error) {
 	return daoImpl.tableManager.Count("GetCount", attr)
+}
+
+// 查询记录存在
+func (daoImpl *daoImpl) Exist(attr interface{}) (bool, error) {
+	b, err := daoImpl.tableManager.Count("Exist", attr)
+	return b > 0, err
 }
 
 // 查询实体方法
