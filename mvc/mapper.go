@@ -302,14 +302,14 @@ const mapper = `
 			{{range $j, $c := $.IntTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} #{.{{BigHump $v.Name}}}{{if ne $v.Number $ColumnNumber}}, {{end}}{{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
 			{{range $j, $c := $.FloatTypes}}
 				{{if eq $t $c}}
 					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if ne .{{BigHump $v.Name}} 0}{{$.RFlower}} #{.{{BigHump $v.Name}}}{{if ne $v.Number $ColumnNumber}}, {{end}}{{$.LFlower}}{end}{{$.RFlower}}
 					{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
@@ -317,34 +317,34 @@ const mapper = `
 				{{if eq $t $c}}
 					{{if eq $t "date"}}
 						{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-						{{$.LFlower}}{if ne (.{{BigHump $v.Name}}.Format "2006-01-02") "0001-01-01"}{{$.RFlower}} #{.{{BigHump $v.Name}}.Format "2006-01-02"}, {{$.LFlower}}{end}{{$.RFlower}}
+						{{$.LFlower}}{if ne (.{{BigHump $v.Name}}.Format "2006-01-02") "0001-01-01"}{{$.RFlower}} #{.{{BigHump $v.Name}}.Format "2006-01-02"}{{if ne $v.Number $ColumnNumber}}, {{end}}{{$.LFlower}}{end}{{$.RFlower}}
 						{{$.LFlower}}{end}{{$.RFlower}}
 					{{end}}
 					{{if eq $t "time"}}
 						{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-						{{$.LFlower}}{if ne (.{{BigHump $v.Name}}.Format "2006-01-02") "0001-01-01"}{{$.RFlower}} #{.{{BigHump $v.Name}}.Format "15:04:05"}, {{$.LFlower}}{end}{{$.RFlower}}
+						{{$.LFlower}}{if ne (.{{BigHump $v.Name}}.Format "2006-01-02") "0001-01-01"}{{$.RFlower}} #{.{{BigHump $v.Name}}.Format "15:04:05"}{{if ne $v.Number $ColumnNumber}}, {{end}}{{$.LFlower}}{end}{{$.RFlower}}
 						{{$.LFlower}}{end}{{$.RFlower}}
 					{{end}}
 					{{if eq $t "year"}}
 						{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-						{{$.LFlower}}{if ne (.{{BigHump $v.Name}}.Format "2006-01-02") "0001-01-01"}{{$.RFlower}} #{.{{BigHump $v.Name}}.Format "2006"}, {{$.LFlower}}{end}{{$.RFlower}}
+						{{$.LFlower}}{if ne (.{{BigHump $v.Name}}.Format "2006-01-02") "0001-01-01"}{{$.RFlower}} #{.{{BigHump $v.Name}}.Format "2006"}{{if ne $v.Number $ColumnNumber}}, {{end}}{{$.LFlower}}{end}{{$.RFlower}}
 						{{$.LFlower}}{end}{{$.RFlower}}
 					{{end}}
 					{{if eq $t "timestamp"}}
 						{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-						{{$.LFlower}}{if ne (.{{BigHump $v.Name}}.Format "2006-01-02") "0001-01-01"}{{$.RFlower}} #{.{{BigHump $v.Name}}.Format "20060102150405"}, {{$.LFlower}}{end}{{$.RFlower}}
+						{{$.LFlower}}{if ne (.{{BigHump $v.Name}}.Format "2006-01-02") "0001-01-01"}{{$.RFlower}} #{.{{BigHump $v.Name}}.Format "20060102150405"}{{if ne $v.Number $ColumnNumber}}, {{end}}{{$.LFlower}}{end}{{$.RFlower}}
 						{{$.LFlower}}{end}{{$.RFlower}}
 					{{end}}
 					{{if eq $t "datetime"}}
 						{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}}
-						{{$.LFlower}}{if ne (.{{BigHump $v.Name}}.Format "2006-01-02") "0001-01-01"}{{$.RFlower}} #{.{{BigHump $v.Name}}.Format "2006-01-02 15:04:05"}, {{$.LFlower}}{end}{{$.RFlower}}
+						{{$.LFlower}}{if ne (.{{BigHump $v.Name}}.Format "2006-01-02") "0001-01-01"}{{$.RFlower}} #{.{{BigHump $v.Name}}.Format "2006-01-02 15:04:05"}{{if ne $v.Number $ColumnNumber}}, {{end}}{{$.LFlower}}{end}{{$.RFlower}}
 						{{$.LFlower}}{end}{{$.RFlower}}
 					{{end}}
 				{{end}}
 			{{end}}
 			{{range $j, $c := $.StringTypes}}
 				{{if eq $t $c}}
-					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} #{.{{BigHump $v.Name}}}, {{$.LFlower}}{end}{{$.RFlower}}
+					{{$.LFlower}}{if .{{BigHump $v.Name}}}{{$.RFlower}} #{.{{BigHump $v.Name}}}{{if ne $v.Number $ColumnNumber}}, {{end}}{{$.LFlower}}{end}{{$.RFlower}}
 				{{end}}
 			{{end}}
 		{{end}}
