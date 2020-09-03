@@ -5,6 +5,7 @@ import (
 	"github.com/lyoshur/mysqlutils/mvc/info"
 )
 
+//noinspection SpellCheckingInspection
 const mapper = `
 {{$ColumnNumber := (len .Table.Columns)}}
 {{$key := ""}}{{range .Table.Indexs}}{{if eq .Name "PRIMARY"}}{{$key = .ColumnName}}{{end}}{{end}}
